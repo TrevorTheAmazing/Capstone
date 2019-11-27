@@ -195,6 +195,8 @@ print(predict('C:\\Users\\Trevor\\Dropbox\\dcc\\capstone\\Capstone\\MLClassifier
 print(predict('C:\\Users\\Trevor\\Dropbox\\dcc\\capstone\\Capstone\\MLClassifier\\mLprojData\\Predict\\STE-000.WAV', model=model))
 print(predict('C:\\Users\\Trevor\\Dropbox\\dcc\\\capstone\\Capstone\\MLClassifier\\mLprojData\\Predict\\STE-002.WAV', model=model))
 print(predict('C:\\Users\\Trevor\\Dropbox\\dcc\\capstone\\Capstone\\MLClassifier\\mLprojData\\Predict\\STE-003.WAV', model=model))
+print(predict('C:\\Users\\Trevor\\Dropbox\\dcc\\\capstone\\Capstone\\MLClassifier\\mLprojData\\Predict\\01 Angel Of Death.wav', model=model))
+print(predict('C:\\Users\\Trevor\\Dropbox\\dcc\\capstone\\Capstone\\MLClassifier\\mLprojData\\Predict\\10 Raining Blood.wav', model=model))
 
 #results = list()
 #uploadedFiles=os.listdir(PREDICTIONS_PATH)

@@ -10,27 +10,29 @@ using System.Net.Http.Headers;
 using Microsoft.AspNetCore.Http.Internal;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Authorization;
 
 namespace APIFileUploader.Controllers
 {
     [Route("api/[controller]")]
     [EnableCors("CorsPolicy")]
     [ApiController]
+    [Authorize]
     public class UploadController : ControllerBase
     {
         //member variables
         //the hosting environment
-        private IHostingEnvironment hostingEnvironment;
+        private IHostingEnvironment hostingEnvironment;//tlc
 
         //constructor
-        public UploadController(IHostingEnvironment hostingEnvironment)
+        public UploadController(IHostingEnvironment hostingEnvironment)//tlc
         {
             this.hostingEnvironment = hostingEnvironment;
         }
 
         //member methods
         [HttpPost]
-        public async Task<HttpResponseMessage> Post(IList<IFormFile> files)
+        public async Task<HttpResponseMessage> Post(IList<IFormFile> files)//tlc
         {
             //use list in case of multiple files
             List<string> newFiles = new List<string>();
@@ -66,7 +68,7 @@ namespace APIFileUploader.Controllers
             };
         }
 
-        private string EnsureCorrectFilename(string filename)
+        private string EnsureCorrectFilename(string filename)//tlc
         {
             if (filename.Contains("\\"))
                 filename = filename.Substring(filename.LastIndexOf("\\") + 1);
@@ -74,7 +76,7 @@ namespace APIFileUploader.Controllers
             return filename;
         }
 
-        private string GetPathAndFilename(string filename)
+        private string GetPathAndFilename(string filename)//tlc
         {
             return this.hostingEnvironment.WebRootPath + "\\mp3\\" + filename;
             //return "GetPathAndFilename()";
