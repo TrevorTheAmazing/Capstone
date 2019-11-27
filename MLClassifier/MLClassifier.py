@@ -71,7 +71,7 @@ def save_data_to_array(path=DATA_PATH, max_len=11):
 ############################
 #######get_train_test#######
 ############################
-def get_train_test(split_ratio=0.9, random_state=42):
+def get_train_test(split_ratio=0.8, random_state=42):
     # Get labels
     labels, indices, _ = get_labels(DATA_PATH)
 
@@ -115,10 +115,10 @@ X_train, X_test, y_train, y_test = get_train_test()
 # # Feature dimension
 feature_dim_1 = 20
 channel = 1
-epochs = 3
+epochs = 100
 batch_size = 1
 verbose = 1
-num_classes = 3
+num_classes = 2
 
 # Reshaping to perform 2D convolution
 X_train = X_train.reshape(X_train.shape[0], feature_dim_1, feature_dim_2, channel)
@@ -131,17 +131,17 @@ y_test_hot = to_categorical(y_test)
 def get_model():
     print("get_model")
     model = Sequential()
-    model.add(Conv2D(32, kernel_size=(3, 3), activation='relu', input_shape=(feature_dim_1, feature_dim_2, channel)))
-    model.add(Conv2D(48, kernel_size=(3, 3), activation='relu'))
+    model.add(Conv2D(32, kernel_size=(3, 3), activation='relu', input_shape=(feature_dim_1, feature_dim_2, channel), name='Conv2d-I'))
+    model.add(Conv2D(48, kernel_size=(3, 3), activation='relu', name='Conv2d-II'))
     #model.add(Conv2D(120, kernel_size=(2, 2), activation='relu'))
     model.add(MaxPooling2D(pool_size=(3, 3)))
     model.add(Dropout(0.25))
     model.add(Flatten())
     #model.add(Dense(128, activation='relu'))
     model.add(Dropout(0.25))
-    model.add(Dense(64, activation='relu'))
+    model.add(Dense(64, activation='relu', name='Dense-I'))
     model.add(Dropout(0.4))
-    model.add(Dense(num_classes, activation='softmax'))
+    model.add(Dense(num_classes, activation='softmax', name='Output-Dense'))
     model.compile(loss=keras.losses.categorical_crossentropy,
                   optimizer = keras.optimizers.Adam(),
                   metrics=['accuracy'])
@@ -188,26 +188,27 @@ tensorboard_callback = keras.callbacks.TensorBoard(log_dir=logdir)
 model = get_model()
 model.fit(X_train, y_train_hot, batch_size=batch_size, epochs=epochs, verbose=verbose, validation_data=(X_test, y_test_hot), callbacks=[tensorboard_callback])
 
+print(model.summary())
 
 #predict
-#print(predict('C:\\Users\\Trevor\\Dropbox\\dcc\\capstone\\capstone\\Capstone\\mLprojData\\Predict\\an2.wav', model=model))
-#print(predict('C:\\Users\\Trevor\\Dropbox\\dcc\\capstone\\capstone\\Capstone\\mLprojData\\Predict\\STE-000.WAV', model=model))
-#print(predict('C:\\Users\\Trevor\\Dropbox\\dcc\\capstone\\capstone\\Capstone\\mLprojData\\Predict\\STE-002.WAV', model=model))
-#print(predict('C:\\Users\\Trevor\\Dropbox\\dcc\\capstone\\capstone\\Capstone\\mLprojData\\Predict\\STE-003.WAV', model=model))
+print(predict('C:\\Users\\Trevor\\Dropbox\\dcc\\capstone\\Capstone\\MLClassifier\\mLprojData\\Predict\\an2.wav', model=model))
+print(predict('C:\\Users\\Trevor\\Dropbox\\dcc\\capstone\\Capstone\\MLClassifier\\mLprojData\\Predict\\STE-000.WAV', model=model))
+print(predict('C:\\Users\\Trevor\\Dropbox\\dcc\\\capstone\\Capstone\\MLClassifier\\mLprojData\\Predict\\STE-002.WAV', model=model))
+print(predict('C:\\Users\\Trevor\\Dropbox\\dcc\\capstone\\Capstone\\MLClassifier\\mLprojData\\Predict\\STE-003.WAV', model=model))
 
-results = list()
-uploadedFiles=os.listdir(PREDICTIONS_PATH)
+#results = list()
+#uploadedFiles=os.listdir(PREDICTIONS_PATH)
 
-results_file = open(os.path.join(RESULTS_PATH, current_time +'.txt'), "w")
+#results_file = open(os.path.join(RESULTS_PATH, current_time +'.txt'), "w")
 
-for fileUpload in uploadedFiles:
-    tempResults = predict(PREDICTIONS_PATH+fileUpload, model=model)
-    tempResults += " - "+PREDICTIONS_PATH+fileUpload + '\n'
-    print(tempResults)
-    results_file.write(tempResults)
-    #results.append(tempResults)
-results_file.close()
-exit()
+#for fileUpload in uploadedFiles:
+#    tempResults = predict(PREDICTIONS_PATH+fileUpload, model=model)
+#    tempResults += " - "+PREDICTIONS_PATH+fileUpload + '\n'
+#    print(tempResults)
+#    results_file.write(tempResults)
+#    #results.append(tempResults)
+#results_file.close()
+#exit()
     
 
 

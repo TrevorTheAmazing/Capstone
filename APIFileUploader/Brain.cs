@@ -71,9 +71,8 @@ namespace APIFileUploader
             }
         }
 
-        public static void NewResultsFile(string newResultsFile)
+        public static List<string> ProcessResults(string newResultsFile, List<string> resultsList)
         {
-            List<string> resultsList = new List<string>();
             using (StreamReader reader = new StreamReader(newResultsFile))
             {
                 string line;
@@ -98,9 +97,20 @@ namespace APIFileUploader
                 }
             }
 
-            //email the results
-            bool mailIsReady = false;
-            if (mailIsReady)
+            return resultsList;
+        }
+
+
+        public static void NewResultsFile(string newResultsFile)
+        {
+            //0. process the new file into a list
+            List<string> resultsList = new List<string>();
+
+            resultsList = ProcessResults(newResultsFile, resultsList);
+            
+
+            //email the results list
+            if (resultsList.Count() > 0)
             {
                 EmailResults(resultsList);
             }
