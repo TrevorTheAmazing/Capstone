@@ -1,0 +1,130 @@
+body {
+    font-size: 17px;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f4f4f4;
+    line-height: 1.5em;
+  }
+  
+  header {
+    background: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    border-bottom: 4px #000 solid;
+    margin-bottom: 10px;
+  }
+  
+  #container {
+    width: 90%;
+    margin: auto;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  #uploadForm {
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+    border: 1px solid black;
+  }
+  
+  #uploadButton {
+    justify-items: center;
+  }
+  /* body{
+      background-color: #3498db;
+      font-family: 'Courier New', Courier, monospace;
+      color: white;
+      text-align: center;
+  } */
+  
+  #shapes {
+    padding-top: 300px;
+  }
+  
+  #square {
+      width: 100px;
+      height: 100px;
+      background:yellow;
+  }
+  
+  #circle {
+      width: 100px;
+      height: 100px;
+      background: red;
+      border-radius: 50%;
+  }
+  
+  #triDown {
+      width: 0;
+      height: 0;
+      border-left: 50px solid transparent;
+      border-right: 50px solid transparent;
+      border-bottom: 100px solid green;
+  }
+  
+  #spaceInvader {
+      box-shadow: 0 0 0 1em red,
+      0 1em 0 1em red,
+      -2.5em 1.5em 0 .5em red,
+      2.5em 1.5em 0 .5em red,
+      -3em -3em 0 0 red,
+      3em -3em 0 0 red,
+      -2em -2em 0 0 red,
+      2em -2em 0 0 red,
+      -3em -1em 0 0 red,
+      -2em -1em 0 0 red,
+      2em -1em 0 0 red,
+      3em -1em 0 0 red,
+      -4em 0 0 0 red,
+      -3em 0 0 0 red,
+      3em 0 0 0 red,
+      4em 0 0 0 red,
+      -5em 1em 0 0 red,
+      -4em 1em 0 0 red,
+      4em 1em 0 0 red,
+      5em 1em 0 0 red,
+      -5em 2em 0 0 red,
+      5em 2em 0 0 red,
+      -5em 3em 0 0 red,
+      -3em 3em 0 0 red,
+      3em 3em 0 0 red,
+      5em 3em 0 0 red,
+      -2em 4em 0 0 red,
+      -1em 4em 0 0 red,
+      1em 4em 0 0 red,
+      2em 4em 0 0 red;
+      background: red;
+      width: 1em;
+      height: 1em;
+      overflow: hidden;
+      margin: 50px 0 70px 65px;
+    }
+  
+  #moon {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      box-shadow: 15px 15px 0 0 red;
+    }
+  
+    #pentagon {
+      position: relative;
+      width: 54px;
+      box-sizing: content-box;
+      border-width: 50px 18px 0;
+      border-style: solid;
+      border-color: red transparent;
+    }
+    #pentagon:before {
+      content: "";
+      position: absolute;
+      height: 0;
+      width: 0;
+      top: -85px;
+      left: -18px;
+      border-width: 0 45px 35px;
+      border-style: solid;
+      border-color: transparent transparent red;
+    }

@@ -66,3 +66,4 @@ C:\Users\Trevor\Dropbox\dcc\capstone\Capstone\WebApp\bin\Debug\netcoreapp3.0\API
 C:\Users\Trevor\Dropbox\dcc\capstone\Capstone\WebApp\bin\Debug\netcoreapp3.0\NAudio.dll
 C:\Users\Trevor\Dropbox\dcc\capstone\Capstone\WebApp\bin\Debug\netcoreapp3.0\APIFileUploader.pdb
 C:\Users\Trevor\Dropbox\dcc\capstone\Capstone\WebApp\bin\Debug\netcoreapp3.0\APIFileUploader.exe.config
+C:\Users\Trevor\Dropbox\dcc\capstone\Capstone\WebApp\bin\Debug\netcoreapp3.0\libman.json

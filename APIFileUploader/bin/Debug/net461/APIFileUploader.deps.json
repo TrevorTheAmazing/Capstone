@@ -30,7 +30,6 @@
           "Microsoft.AspNetCore.HttpsPolicy": "2.2.0",
           "Microsoft.AspNetCore.Mvc": "2.2.0",
           "Microsoft.AspNetCore.StaticFiles": "2.2.0",
-          "Microsoft.EntityFrameworkCore.Design": "2.2.0",
           "Microsoft.EntityFrameworkCore.SqlServer": "2.2.0",
           "Microsoft.EntityFrameworkCore.Tools": "2.2.0",
           "Microsoft.VisualStudio.Web.BrowserLink": "2.2.0",
@@ -1553,9 +1552,6 @@
         "dependencies": {
           "Microsoft.CSharp": "4.5.0",
           "Microsoft.EntityFrameworkCore.Relational": "2.2.0"
-        },
-        "compile": {
-          "lib/net461/Microsoft.EntityFrameworkCore.Design.dll": {}
         }
       },
       "Microsoft.EntityFrameworkCore.Relational/2.2.0": {
@@ -2202,7 +2198,6 @@
           "Microsoft.AspNetCore.HttpsPolicy": "2.2.0",
           "Microsoft.AspNetCore.Mvc": "2.2.0",
           "Microsoft.AspNetCore.StaticFiles": "2.2.0",
-          "Microsoft.EntityFrameworkCore.Design": "2.2.0",
           "Microsoft.EntityFrameworkCore.SqlServer": "2.2.0",
           "Microsoft.EntityFrameworkCore.Tools": "2.2.0",
           "Microsoft.VisualStudio.Web.BrowserLink": "2.2.0",

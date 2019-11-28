@@ -1125,7 +1125,7 @@
           "Microsoft.EntityFrameworkCore.Relational": "2.2.0"
         },
         "compile": {
-          "lib/net461/Microsoft.EntityFrameworkCore.Design.dll": {}
+          "lib/net461/_._": {}
         },
         "runtime": {
           "lib/net461/Microsoft.EntityFrameworkCore.Design.dll": {}
@@ -3802,7 +3802,7 @@
           "Microsoft.EntityFrameworkCore.Relational": "2.2.0"
         },
         "compile": {
-          "lib/net461/Microsoft.EntityFrameworkCore.Design.dll": {}
+          "lib/net461/_._": {}
         },
         "runtime": {
           "lib/net461/Microsoft.EntityFrameworkCore.Design.dll": {}
@@ -10358,7 +10358,6 @@
       "Microsoft.AspNetCore.HttpsPolicy >= 2.2.0",
       "Microsoft.AspNetCore.Mvc >= 2.2.0",
       "Microsoft.AspNetCore.StaticFiles >= 2.2.0",
-      "Microsoft.EntityFrameworkCore.Design >= 2.2.0",
       "Microsoft.EntityFrameworkCore.SqlServer >= 2.2.0",
       "Microsoft.EntityFrameworkCore.Tools >= 2.2.0",
       "Microsoft.VisualStudio.Web.BrowserLink >= 2.2.0",
@@ -10430,10 +10429,6 @@
             "version": "[2.2.0, )"
           },
           "Microsoft.AspNetCore.StaticFiles": {
-            "target": "Package",
-            "version": "[2.2.0, )"
-          },
-          "Microsoft.EntityFrameworkCore.Design": {
             "target": "Package",
             "version": "[2.2.0, )"
           },

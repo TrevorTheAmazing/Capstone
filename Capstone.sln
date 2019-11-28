@@ -9,7 +9,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "MLClassifier", "MLClassifier\MLClassifier.pyproj", "{8B8C12ED-EC76-474C-BCDD-9416D58E9665}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApp", "WebApp\WebApp.csproj", "{4861B398-3096-457B-88DE-80267823304A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnsignedArtists", "UnsignedArtists\UnsignedArtists.csproj", "{33B4456C-8D24-44C4-84C4-B204EA26A05D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,10 @@ Global
 		{E0E4B567-F35D-4784-9C09-48162F8233A6}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8B8C12ED-EC76-474C-BCDD-9416D58E9665}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8B8C12ED-EC76-474C-BCDD-9416D58E9665}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4861B398-3096-457B-88DE-80267823304A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4861B398-3096-457B-88DE-80267823304A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4861B398-3096-457B-88DE-80267823304A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4861B398-3096-457B-88DE-80267823304A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{33B4456C-8D24-44C4-84C4-B204EA26A05D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33B4456C-8D24-44C4-84C4-B204EA26A05D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33B4456C-8D24-44C4-84C4-B204EA26A05D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33B4456C-8D24-44C4-84C4-B204EA26A05D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

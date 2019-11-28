@@ -1222,7 +1222,6 @@ C:\Users\Trevor\Dropbox\dcc\capstone\Capstone\APIFileUploader\bin\Debug\net461\M
 C:\Users\Trevor\Dropbox\dcc\capstone\Capstone\APIFileUploader\bin\Debug\net461\Microsoft.DotNet.PlatformAbstractions.dll
 C:\Users\Trevor\Dropbox\dcc\capstone\Capstone\APIFileUploader\bin\Debug\net461\Microsoft.EntityFrameworkCore.dll
 C:\Users\Trevor\Dropbox\dcc\capstone\Capstone\APIFileUploader\bin\Debug\net461\Microsoft.EntityFrameworkCore.Abstractions.dll
-C:\Users\Trevor\Dropbox\dcc\capstone\Capstone\APIFileUploader\bin\Debug\net461\Microsoft.EntityFrameworkCore.Design.dll
 C:\Users\Trevor\Dropbox\dcc\capstone\Capstone\APIFileUploader\bin\Debug\net461\Microsoft.EntityFrameworkCore.Relational.dll
 C:\Users\Trevor\Dropbox\dcc\capstone\Capstone\APIFileUploader\bin\Debug\net461\Microsoft.EntityFrameworkCore.SqlServer.dll
 C:\Users\Trevor\Dropbox\dcc\capstone\Capstone\APIFileUploader\bin\Debug\net461\Microsoft.Extensions.Caching.Abstractions.dll
@@ -1404,3 +1403,4 @@ C:\Users\Trevor\Dropbox\dcc\capstone\Capstone\APIFileUploader\obj\Debug\net461\A
 C:\Users\Trevor\Dropbox\dcc\capstone\Capstone\APIFileUploader\obj\Debug\net461\APIFileUploader.csproj.CopyComplete
 C:\Users\Trevor\Dropbox\dcc\capstone\Capstone\APIFileUploader\obj\Debug\net461\APIFileUploader.exe
 C:\Users\Trevor\Dropbox\dcc\capstone\Capstone\APIFileUploader\obj\Debug\net461\APIFileUploader.pdb
+C:\Users\Trevor\Dropbox\dcc\capstone\Capstone\APIFileUploader\bin\Debug\net461\Microsoft.EntityFrameworkCore.Design.dll

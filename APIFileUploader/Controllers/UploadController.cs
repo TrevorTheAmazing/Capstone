@@ -11,13 +11,14 @@ using Microsoft.AspNetCore.Http.Internal;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.EntityFrameworkCore.Design;
 
 namespace APIFileUploader.Controllers
 {
     [Route("api/[controller]")]
     [EnableCors("CorsPolicy")]
     [ApiController]
-    [Authorize]
+    //[Authorize]
     public class UploadController : ControllerBase
     {
         //member variables
@@ -68,6 +69,12 @@ namespace APIFileUploader.Controllers
             };
         }
 
+        //[HttpGet]
+        //public ActionResult<IEnumerable<string>> Get()
+        //{
+        //    
+        //}
+
         private string EnsureCorrectFilename(string filename)//tlc
         {
             if (filename.Contains("\\"))
@@ -81,11 +88,5 @@ namespace APIFileUploader.Controllers
             return this.hostingEnvironment.WebRootPath + "\\mp3\\" + filename;
             //return "GetPathAndFilename()";
         }
-
-        //[HttpGet]
-        //public ActionResult<IEnumerable<string>> Get()
-        //{
-        //    return new string[] { "upload1", "upload2" };
-        //}
     }
 }
