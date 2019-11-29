@@ -1,0 +1,61 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+@{
+    ViewData["Title"] = "Upload Page";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+@if (SignInManager.IsSignedIn(User))
+{
+    <p>Please upload an .mp3 file.</p>
+    <div class="text-center">
+        <h1 class="display-4">Upload</h1>
+        <center>
+            <div id="container">
+                <input type="file" id="fileUploadInput" name="files" multiple />
+                <br />
+                <progress></progress>
+            </div>
+        </center>
+    </div>
+}
+else
+{
+    <p>Register to upload a song.</p>
+}
+
+@section scripts{
+    <script>
+        $(function () {
+            $( document ).ready(function() {
+
+            $("#fileUploadInput").change(function(){
+
+                var files = $("#fileUploadInput").prop("files");
+                var formData = new FormData();
+                for(let i = 0; i != files.length; i++){
+                    console.log("i: " + i + " File Name: " + files[i].name);
+                    formData.append("files", files[i]);
+                }
+
+                $.ajax({
+                    type: "POST",
+                    url: "https://localhost:44344/api/upload",
+                    data: formData,
+                    contentType: false,
+                    processData: false,
+                    success: function(data){
+                        alert("Hit Upload");
+                    },
+                    error: function(data){
+                        alert("Error, did not hit.");
+                    }
+                });
+            });
+        });
+        });
+    </script>
+}
