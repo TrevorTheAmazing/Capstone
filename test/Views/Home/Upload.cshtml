@@ -11,16 +11,35 @@
 @if (SignInManager.IsSignedIn(User))
 {
     <p>Please upload an .mp3 file.</p>
-    <div class="text-center">
+
+    <div class="jumbotron">
         <h1 class="display-4">Upload</h1>
+        <p class="lead">This is the mouth of the machine learning algorithm that will pass judgement against your upload.</p>
+        <hr class="my-4">
         <center>
-            <div id="container">
-                <input type="file" id="fileUploadInput" name="files" multiple />
+            <div id="container" class="form-group has-success">
+                <input type="file" id="fileUploadInput" class="form-control-file" name="files" multiple />
                 <br />
                 <progress></progress>
             </div>
         </center>
+        <p class="lead">
+            @*<div class="alert alert-dismissible alert-danger">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <h4 class="alert-heading">Notice</h4>
+            <p class="mb-0">The upload will begin as soon as you select a file.</p>
+        </div>*@
+            <div class="alert alert-dismissible alert-secondary">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <strong>Please note</strong> The upload will begin <a href="#" class="alert-link">automatically</a> after you select a file.
+            </div>
+
+        </p>
     </div>
+
+
+
+
 }
 else
 {
@@ -30,32 +49,32 @@ else
 @section scripts{
     <script>
         $(function () {
-            $( document ).ready(function() {
+            $(document).ready(function () {
 
-            $("#fileUploadInput").change(function(){
+                $("#fileUploadInput").change(function () {
 
-                var files = $("#fileUploadInput").prop("files");
-                var formData = new FormData();
-                for(let i = 0; i != files.length; i++){
-                    console.log("i: " + i + " File Name: " + files[i].name);
-                    formData.append("files", files[i]);
-                }
-
-                $.ajax({
-                    type: "POST",
-                    url: "https://localhost:44344/api/upload",
-                    data: formData,
-                    contentType: false,
-                    processData: false,
-                    success: function(data){
-                        alert("Hit Upload");
-                    },
-                    error: function(data){
-                        alert("Error, did not hit.");
+                    var files = $("#fileUploadInput").prop("files");
+                    var formData = new FormData();
+                    for (let i = 0; i != files.length; i++) {
+                        console.log("i: " + i + " File Name: " + files[i].name);
+                        formData.append("files", files[i]);
                     }
+
+                    $.ajax({
+                        type: "POST",
+                        url: "https://localhost:44344/api/upload",
+                        data: formData,
+                        contentType: false,
+                        processData: false,
+                        success: function (data) {
+                            alert("Hit Upload");
+                        },
+                        error: function (data) {
+                            alert("Error, did not hit.");
+                        }
+                    });
                 });
             });
-        });
         });
     </script>
 }
