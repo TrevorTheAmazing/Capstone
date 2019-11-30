@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Trevor\\Desktop\\csharp workups\\Test\\test\\Capstone.csproj": {}
+    "C:\\Users\\Trevor\\Dropbox\\dcc\\capstone\\Capstone\\test\\Capstone.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Trevor\\Desktop\\csharp workups\\Test\\test\\Capstone.csproj": {
+    "C:\\Users\\Trevor\\Dropbox\\dcc\\capstone\\Capstone\\test\\Capstone.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Trevor\\Desktop\\csharp workups\\Test\\test\\Capstone.csproj",
+        "projectUniqueName": "C:\\Users\\Trevor\\Dropbox\\dcc\\capstone\\Capstone\\test\\Capstone.csproj",
         "projectName": "Capstone",
-        "projectPath": "C:\\Users\\Trevor\\Desktop\\csharp workups\\Test\\test\\Capstone.csproj",
+        "projectPath": "C:\\Users\\Trevor\\Dropbox\\dcc\\capstone\\Capstone\\test\\Capstone.csproj",
         "packagesPath": "C:\\Users\\Trevor\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Trevor\\Desktop\\csharp workups\\Test\\test\\obj\\",
+        "outputPath": "C:\\Users\\Trevor\\Dropbox\\dcc\\capstone\\Capstone\\test\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"
@@ -42,6 +42,10 @@
       "frameworks": {
         "netcoreapp3.0": {
           "dependencies": {
+            "MailKit": {
+              "target": "Package",
+              "version": "[2.4.1, )"
+            },
             "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": {
               "target": "Package",
               "version": "[3.0.0, )"

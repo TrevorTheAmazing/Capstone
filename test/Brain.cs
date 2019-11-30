@@ -11,6 +11,8 @@ using Capstone;
 using Microsoft.AspNetCore.Identity;
 using test.Models;
 using Microsoft.EntityFrameworkCore;
+using MimeKit;
+using MailKit.Net.Smtp;
 
 namespace Capstone
 {
@@ -146,6 +148,33 @@ namespace Capstone
         public static void EmailResults(string recipientEmailAddress)
         {
             //email results now.   
+            var message = new MimeMessage();
+            message.From.Add(new MailboxAddress("Joey Tribbiani", recipientEmailAddress));
+            //message.To.Add(new MailboxAddress("Mrs. Chanandler Bong", "YOU_TO_ADDRESS@gmail.com"));
+            message.To.Add(new MailboxAddress("Mrs. Chanandler Bong", "TrevorTheAmazing@protonmail.com"));
+            message.Subject = "How you doin'?";
+
+            message.Body = new TextPart("plain")
+            {
+                Text = @"Hey Chandler,I just wanted to let you know that Monica and I were going to go play some paintball, you in?-- Joey"
+            };
+
+            using (var client = new SmtpClient())
+            {
+                client.Connect("smtp.gmail.com", 587);
+
+
+                // Note: since we don't have an OAuth2 token, disable
+                // the XOAUTH2 authentication mechanism.
+                client.AuthenticationMechanisms.Remove("XOAUTH2");
+
+                // Note: only needed if the SMTP server requires authentication
+                //client.Authenticate("YOUR_GMAIL_NAME", "YOUR_PASSWORD");
+
+                client.Send(message);
+                client.Disconnect(true);
+            }
+
         }
     }
 }

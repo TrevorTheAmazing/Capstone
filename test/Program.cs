@@ -44,6 +44,7 @@ namespace test
         {
             Console.WriteLine("new file created - " + e.FullPath);
             Brain.NewResultsFile(e.FullPath);
+            
         }
     }
 }
