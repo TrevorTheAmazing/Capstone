@@ -43,27 +43,77 @@ namespace Capstone
 
         private static void ConvertMp3ToWav(string mp3)
         {
+            string tempPath = @"C:\Users\Trevor\Dropbox\dcc\capstone\Capstone\test\wwwroot\temp\";
+
             //get the filename without its extension
             string tempFilename = Path.GetFileNameWithoutExtension(mp3);// = "001066.mp3"
             try
             {
+                string predictionsFilePath = "";
                 //create a new mp3 reader
                 using (Mp3FileReader reader = new Mp3FileReader(mp3))
                 {
                     //create a new wav reader
                     using (WaveStream pcmStream = WaveFormatConversionStream.CreatePcmStream(reader))
                     {
+                        predictionsFilePath = predictionsPath + tempFilename + ".wav";
+                        tempPath += tempFilename + ".wav";
                         //create a new .wav
-                        WaveFileWriter.CreateWaveFile(predictionsPath + tempFilename + ".wav", pcmStream);
+                        //WaveFileWriter.CreateWaveFile(predictionsPath + tempFilename + ".wav", pcmStream);
+                        //WaveFileWriter.CreateWaveFile(tempPath + tempFilename + ".wav", pcmStream);
+                        WaveFileWriter.CreateWaveFile(tempPath, pcmStream);
                     }
                 }
+
+                TrimWavFile(tempPath, predictionsFilePath, TimeSpan.Zero, TimeSpan.FromSeconds(30));
             }
             catch (Exception e)
             {
                 Console.WriteLine("*** 3RR0R ***" + tempFilename + " *** 3RROR *** " + e.Message + "*** 3RROR ***");
             }
-
             //return true;
+        }
+
+        public static void TrimWavFile(string inPath, string outPath, TimeSpan cutFromStart, TimeSpan cutFromEnd)
+        {
+            using (WaveFileReader reader = new WaveFileReader(inPath))
+            {
+                using (WaveFileWriter writer = new WaveFileWriter(outPath, reader.WaveFormat))
+                {
+                    int bytesPerMillisecond = reader.WaveFormat.AverageBytesPerSecond / 1000;
+
+                    int startPos = (int)cutFromStart.TotalMilliseconds * bytesPerMillisecond;
+                    startPos = startPos - startPos % reader.WaveFormat.BlockAlign;
+
+                    int endBytes = (int)cutFromEnd.TotalMilliseconds * bytesPerMillisecond;
+                    endBytes = endBytes - endBytes % reader.WaveFormat.BlockAlign;
+
+                    //dont subtract from the end.  set the end position to 00:30
+                    //int endPos = (int)reader.Length - endBytes;
+                    int endPos = endBytes;
+
+                    TrimWavFile(reader, writer, startPos, endPos);
+                }
+            }
+        }
+
+        private static void TrimWavFile(WaveFileReader reader, WaveFileWriter writer, int startPos, int endPos)
+        {
+            reader.Position = startPos;
+            byte[] buffer = new byte[1024];
+            while (reader.Position < endPos)
+            {
+                int bytesRequired = (int)(endPos - reader.Position);
+                if (bytesRequired > 0)
+                {
+                    int bytesToRead = Math.Min(bytesRequired, buffer.Length);
+                    int bytesRead = reader.Read(buffer, 0, bytesToRead);
+                    if (bytesRead > 0)
+                    {
+                        writer.WriteData(buffer, 0, bytesRead);
+                    }
+                }
+            }
         }
 
         public static void ClassifyConvertedUploads()
@@ -145,17 +195,19 @@ namespace Capstone
             var message = new MimeMessage();
             message.From.Add(new MailboxAddress("Computer Dude", appMasterEmailAddress));
             message.To.Add(new MailboxAddress("Mr. Record Label Exec", labelRepEmailAddress));
-            message.Subject = "*AWESOME NEW SONG ALERT*" + filename;
+            message.Subject = "*AWESOME NEW SONG ALERT*";
 
             message.Body = new TextPart("plain")
             {
-                Text = @"Hey Mister, somebody just uploaded a song that appears to be not unlike that in which you are in search of."
+                Text = @"Hello Mr. Record Label Executive, " + 
+                        "somebody just uploaded a song that appears to be exactly what you are looking for.  " +
+                        "Please listen to " + filename + " at your earliest convenience." +
+                        "That is all."
             };
 
             using (var client = new SmtpClient())
             {
                 client.Connect("smtp.gmail.com", 587);
-
 
                 // Note: since we don't have an OAuth2 token, disable
                 // the XOAUTH2 authentication mechanism.
@@ -168,5 +220,9 @@ namespace Capstone
                 client.Disconnect(true);
             }
         }
+
+
     }
+
+
 }

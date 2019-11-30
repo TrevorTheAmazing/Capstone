@@ -9,11 +9,10 @@ namespace Capstone
     public class PythonEnvironment
     {
         //member variables
-        private string predictionDirectory;// = @"C:\Users\Trevor\Dropbox\dcc\capstone\Capstone\MLClassifier\mLprojData\Predict";
-        private string pythonScriptToExecute;
-        private string pythonExePath;
         public string errors = "";
         public string results = "";
+        private string pythonExePath;
+        private string pythonScriptToExecute;
         ProcessStartInfo processStartInfo;
 
         //constructor
