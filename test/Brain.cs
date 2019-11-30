@@ -18,13 +18,10 @@ namespace Capstone
 {
     public static class Brain
     {
-        //path to predictions
-        static string newPath = @"C:\Users\Trevor\Desktop\csharp workups\Test\test\MLClassifier\mLprojData\Predict\";
-        //array of target labels
-        static string[] targetLabels = new string[1] { "metal" };
-        //label rep's email address
+        static string predictionsPath = Private.Private.predictionsPath;
         static string labelRepEmailAddress = Private.Private.labelRepEmailAddress;
-
+        static string appMasterEmailAddress = Private.Private.appMasterEmailAddress;
+        static string appMasterEmailPassword = Private.Private.appMasterEmailPassword;
 
         public static void ProcessUploads(List<string> newFiles)
         {
@@ -57,7 +54,7 @@ namespace Capstone
                     using (WaveStream pcmStream = WaveFormatConversionStream.CreatePcmStream(reader))
                     {
                         //create a new .wav
-                        WaveFileWriter.CreateWaveFile(newPath + tempFilename + ".wav", pcmStream);
+                        WaveFileWriter.CreateWaveFile(predictionsPath + tempFilename + ".wav", pcmStream);
                     }
                 }
             }
@@ -85,7 +82,7 @@ namespace Capstone
         public static void ClearUploadsFromPredictionsDirectory(List<string> filesToDelete)
         {
             //remove the uploaded files after they have been classified
-            for (int i = 0; i < filesToDelete.Count(); i ++)
+            for (int i = 0; i < filesToDelete.Count(); i++)
             {
                 File.Delete(filesToDelete[i]);
             }
@@ -93,8 +90,6 @@ namespace Capstone
 
         public static void NewResultsFile(string newResultsFile)
         {
-            string recipient = "";
-
             //0. process the new file into a list
             List<string> resultsList = new List<string>();
 
@@ -112,21 +107,20 @@ namespace Capstone
                     string filepath = resultsList[i].Remove(0, resultsList[i].IndexOf("C:\\"));
                     filesToDelete.Add(filepath);
                     string filename = Path.GetFileNameWithoutExtension(filepath);
-                    
+
                     //... and the result label matches the preferred labels ...
-                    if (targetLabels.Contains(predictionString))
+                    if (Private.Private.targetLabels.Contains(predictionString))
                     {
                         //... notify the label.
-                        recipient = labelRepEmailAddress;
-                        break;
+                        EmailResults(filename);
                     }
                     else
                     {
                         //... track down the artist to tell them the bad news?
                     }
                 }
-                //send that email.
-                EmailResults(recipient);
+
+                //remove the processed files from the predictions directory.
                 ClearUploadsFromPredictionsDirectory(filesToDelete);
             }
         }
@@ -145,18 +139,17 @@ namespace Capstone
             return resultsList;
         }
 
-        public static void EmailResults(string recipientEmailAddress)
+        public static void EmailResults(string filename)
         {
             //email results now.   
             var message = new MimeMessage();
-            message.From.Add(new MailboxAddress("Joey Tribbiani", recipientEmailAddress));
-            //message.To.Add(new MailboxAddress("Mrs. Chanandler Bong", "YOU_TO_ADDRESS@gmail.com"));
-            message.To.Add(new MailboxAddress("Mrs. Chanandler Bong", "TrevorTheAmazing@protonmail.com"));
-            message.Subject = "How you doin'?";
+            message.From.Add(new MailboxAddress("Computer Dude", appMasterEmailAddress));
+            message.To.Add(new MailboxAddress("Mr. Record Label Exec", labelRepEmailAddress));
+            message.Subject = "*AWESOME NEW SONG ALERT*" + filename;
 
             message.Body = new TextPart("plain")
             {
-                Text = @"Hey Chandler,I just wanted to let you know that Monica and I were going to go play some paintball, you in?-- Joey"
+                Text = @"Hey Mister, somebody just uploaded a song that appears to be not unlike that in which you are in search of."
             };
 
             using (var client = new SmtpClient())
@@ -169,12 +162,11 @@ namespace Capstone
                 client.AuthenticationMechanisms.Remove("XOAUTH2");
 
                 // Note: only needed if the SMTP server requires authentication
-                //client.Authenticate("YOUR_GMAIL_NAME", "YOUR_PASSWORD");
+                client.Authenticate(appMasterEmailAddress, appMasterEmailPassword);
 
                 client.Send(message);
                 client.Disconnect(true);
             }
-
         }
     }
 }

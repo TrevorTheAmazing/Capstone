@@ -16,6 +16,7 @@ namespace test.Models
         public string filepath { get; set; }
         public string originalFilename { get; set; }
         public string guid { get; set; }
+        public string labelledGenre { get; set; }
 
         [ForeignKey("UserId")]
         public string UserId { get; set; }

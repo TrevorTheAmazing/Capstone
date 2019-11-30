@@ -235,6 +235,9 @@ namespace test.Data.Migrations
                     b.Property<string>("guid")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("labelledGenre")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("originalFilename")
                         .HasColumnType("nvarchar(max)");
 

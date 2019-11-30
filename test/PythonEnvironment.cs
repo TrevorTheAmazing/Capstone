@@ -20,7 +20,7 @@ namespace Capstone
         public PythonEnvironment()
         {
             this.pythonExePath = @"C:\Users\Trevor\AppData\Local\Programs\Python\Python37\python.exe";
-            this.pythonScriptToExecute = @"C:\Users\Trevor\Desktop\csharp workups\Test\test\MLClassifier\MLClassifier.py";
+            this.pythonScriptToExecute = @"C:\Users\Trevor\Dropbox\dcc\capstone\Capstone\test\MLClassifier\MLClassifier.py";
             this.processStartInfo = new ProcessStartInfo();
         }
 

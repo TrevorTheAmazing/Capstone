@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29519.87
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Capstone", "Capstone.csproj", "{E9533612-B100-4A95-96D5-C211894656C4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MetalDetector", "MetalDetector.csproj", "{E9533612-B100-4A95-96D5-C211894656C4}"
 EndProject
 Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "MLClassifier", "MLClassifier\MLClassifier.pyproj", "{8B8C12ED-EC76-474C-BCDD-9416D58E9665}"
 EndProject

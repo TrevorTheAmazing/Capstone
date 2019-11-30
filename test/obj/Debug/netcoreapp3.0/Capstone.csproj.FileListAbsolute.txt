@@ -270,3 +270,8 @@ C:\Users\Trevor\Dropbox\dcc\capstone\Capstone\test\obj\Debug\netcoreapp3.0\Capst
 C:\Users\Trevor\Dropbox\dcc\capstone\Capstone\test\obj\Debug\netcoreapp3.0\Capstone.csproj.CopyComplete
 C:\Users\Trevor\Dropbox\dcc\capstone\Capstone\test\obj\Debug\netcoreapp3.0\Capstone.dll
 C:\Users\Trevor\Dropbox\dcc\capstone\Capstone\test\obj\Debug\netcoreapp3.0\Capstone.pdb
+C:\Users\Trevor\Dropbox\dcc\capstone\Capstone\test\bin\Debug\netcoreapp3.0\MailKit.dll
+C:\Users\Trevor\Dropbox\dcc\capstone\Capstone\test\bin\Debug\netcoreapp3.0\MimeKit.dll
+C:\Users\Trevor\Dropbox\dcc\capstone\Capstone\test\bin\Debug\netcoreapp3.0\BouncyCastle.Crypto.dll
+C:\Users\Trevor\Dropbox\dcc\capstone\Capstone\test\obj\Debug\netcoreapp3.0\Capstone.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Trevor\Dropbox\dcc\capstone\Capstone\test\obj\Debug\netcoreapp3.0\Capstone.MvcApplicationPartsAssemblyInfo.cache

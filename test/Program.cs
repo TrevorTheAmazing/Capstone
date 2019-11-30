@@ -2,12 +2,14 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 using Capstone;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using test.Controllers;
 
 namespace test
 {
@@ -18,7 +20,6 @@ namespace test
 
         public static void Main(string[] args)
         {
-            //InitWatcherForUploads();//tlc
             InitWatcherForResults();//tlc
             CreateHostBuilder(args).Build().Run();
         }
@@ -32,7 +33,7 @@ namespace test
 
         static void InitWatcherForResults() //tlc
         {
-            string directory = @"C:\Users\Trevor\Desktop\csharp workups\Test\test\MLClassifier\mLprojData\Results\";
+            string directory = @"C:\Users\Trevor\Dropbox\dcc\capstone\Capstone\test\MLClassifier\mLprojData\Results\";
             watcher = new FileSystemWatcher();
             watcher.Path = directory;
             watcher.NotifyFilter = NotifyFilters.FileName;
@@ -40,11 +41,10 @@ namespace test
             watcher.EnableRaisingEvents = true;
         }
 
-        private static void OnCreated(object source, FileSystemEventArgs e) //tlc
+        private async static void OnCreated(object source, FileSystemEventArgs e) //tlc
         {
             Console.WriteLine("new file created - " + e.FullPath);
             Brain.NewResultsFile(e.FullPath);
-            
         }
     }
 }

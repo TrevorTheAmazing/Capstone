@@ -19,10 +19,11 @@ import tensorboard
 #tensorboard --logdir logs/fit --bind_all
 
 #I. set the data path
-DATA_PATH = "C:\\Users\\Trevor\\Desktop\\csharp workups\\Test\\test\\MLClassifier\\mLprojData\\Data\\"
-PREDICTIONS_PATH = "C:\\Users\\Trevor\\Desktop\\csharp workups\\Test\\test\\MLClassifier\\mLprojData\\Predict\\"
-RESULTS_PATH = "C:\\Users\\Trevor\\Desktop\\csharp workups\\Test\\test\\MLClassifier\\mLprojData\\Results\\"
+DATA_PATH = "C:\\Users\\Trevor\\Dropbox\\dcc\\capstone\\Capstone\\test\\MLClassifier\\mLprojData\\Data\\"
+PREDICTIONS_PATH = "C:\\Users\\Trevor\\Dropbox\\dcc\\capstone\\Capstone\\test\\MLClassifier\\mLprojData\\Predict\\"
+RESULTS_PATH = "C:\\Users\\Trevor\\Dropbox\\dcc\\capstone\\Capstone\\test\\MLClassifier\\mLprojData\\Results\\"
 print('DataPath is set to '+DATA_PATH)
+
 ########################
 #######Get_Labels#######
 ########################
@@ -32,7 +33,6 @@ def get_labels(path=DATA_PATH):
     labels = os.listdir(path)
     label_indices = np.arange(0, len(labels))
     return labels, label_indices, to_categorical(label_indices)
-
 
 #######wav2mfcc#######
 # convert .wav to mfcc
@@ -127,7 +127,6 @@ X_test = X_test.reshape(X_test.shape[0], feature_dim_1, feature_dim_2, channel)
 y_train_hot = to_categorical(y_train)
 y_test_hot = to_categorical(y_test)
 
-
 def get_model():
     print("get_model")
     model = Sequential()
@@ -191,28 +190,16 @@ model.fit(X_train, y_train_hot, batch_size=batch_size, epochs=epochs, verbose=ve
 print(model.summary())
 
 #predict
-#print(predict('C:\\Users\\Trevor\\Desktop\\csharp workups\\Test\\test\\MLClassifier\\mLprojData\\Predict\\an2.wav', model=model))
-#print(predict('C:\\Users\\Trevor\\Desktop\\csharp workups\\Test\\test\\MLClassifier\\mLprojData\\Predict\\STE-000.WAV', model=model))
-#print(predict('C:\\Users\\Trevor\\Desktop\\csharp workups\\Test\\test\\MLClassifier\\mLprojData\\Predict\\STE-002.WAV', model=model))
-#print(predict('C:\\Users\\Trevor\\Desktop\\csharp workups\\Test\\test\\MLClassifier\\mLprojData\\Predict\\STE-003.WAV', model=model))
-#print(predict('C:\\Users\\Trevor\\Desktop\\csharp workups\\Test\\test\\MLClassifier\\mLprojData\\Predict\\01 Angel Of Death.wav', model=model))
-#print(predict('C:\\Users\\Trevor\\Desktop\\csharp workups\\Test\\test\\MLClassifier\\mLprojData\\Predict\\10 Raining Blood.wav', model=model))
-
 uploadedFiles=os.listdir(PREDICTIONS_PATH)
-
 
 resultsList=[]
 
-#for file in os.listdir(PREDICTIONS_PATH):
 for file in uploadedFiles:
-    #tempResults = predict(os.path.join(PREDICTIONS_PATH,file), model=model)
     tempFile=os.path.join(PREDICTIONS_PATH,file)
     tempResults=predict(tempFile, model=model)
-    #tempResults += " - "+PREDICTIONS_PATH+file+'\n'
     tempResults+=" - "+tempFile+'\n'
     print(tempResults)
     resultsList.append(tempResults)
-    #results_file.write(tempResults)
 
 results_file = open(os.path.join(RESULTS_PATH, current_time +'.txt'), "w")
 results_file.writelines(resultsList)

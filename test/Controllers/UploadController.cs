@@ -14,6 +14,10 @@ using test.Data;
 using test.Models;
 using System.Security.Claims;
 using Capstone;
+using NAudio.Wave;
+using MimeKit;
+using MailKit.Net.Smtp;
+using Capstone.Private;
 
 namespace test.Controllers
 {
@@ -24,15 +28,13 @@ namespace test.Controllers
         //member variables
         //the hosting environment
         private IHostingEnvironment hostingEnvironment;//tlc
-        private readonly ApplicationDbContext _context;//tlc
-        //private readonly UserManager<IdentityUser> userManager;//tlc
+        private readonly ApplicationDbContext db;//tlc
 
         //constructor
         public UploadController(IHostingEnvironment hostingEnvironment, ApplicationDbContext context)
         {
-            _context = context;//tlc
+            db = context;//tlc
             this.hostingEnvironment = hostingEnvironment;
-            //this.userManager = userManager;//tlc
         }
 
         //member methods
@@ -41,19 +43,31 @@ namespace test.Controllers
         {
             //use list in case of multiple files
             List<string> newFiles = new List<string>();
+            List<Submission> newSubmissions = new List<Submission>();
+
 
             //for each file submitted
             foreach (IFormFile source in files)
             {
+                Submission newSubmission = new Submission();
+
+                newSubmission.UserId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+                newSubmission.guid = System.Guid.NewGuid().ToString();
+
                 //grab the filename
                 string filename = ContentDispositionHeaderValue.Parse(source.ContentDisposition).FileName.Trim('"');
 
+
                 //validate the filename
                 filename = this.EnsureCorrectFilename(filename);
-                //submission.originalFilename = filename;
+                newSubmission.originalFilename = filename;
+                
+                //uncomment this to use the guid instead of the original filename
+                //filename = newSubmission.guid + ".mp3";
 
                 //set the path
                 string uploadFilename = this.GetPathAndFilename(filename);
+                newSubmission.filepath = uploadFilename;
 
                 //create the file on the local filesystem
                 using (FileStream output = System.IO.File.Create(uploadFilename))
@@ -61,10 +75,12 @@ namespace test.Controllers
 
                 //add the filename(actually the guid) to a list
                 newFiles.Add(uploadFilename);
+                newSubmissions.Add(newSubmission);
 
-                //create a new submission for each file
-                CreateNewSubmission(uploadFilename);
             }
+
+            //create a new submission for each file
+            InsertNewSubmissions(newSubmissions);
 
             //send the list of new filenames to be processed to the brain
             Brain.ProcessUploads(newFiles);
@@ -89,17 +105,16 @@ namespace test.Controllers
             return this.hostingEnvironment.WebRootPath + "\\mp3\\" + filename;
         }
 
-        private void CreateNewSubmission(string uploadFilename)
+        private void InsertNewSubmissions(List<Submission> newSubmissionsList)
         {
-            string userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
-
-            Submission submission = new Submission();
-
-            submission.filepath = uploadFilename;
-            submission.UserId = userId;
-            submission.originalFilename = Path.GetFileName(uploadFilename);
-            _context.Add(submission);
-            _context.SaveChanges();
+            foreach (var newSubmission in newSubmissionsList)
+            {
+                db.Submissions.Add(newSubmission);
+                db.SaveChanges();
+            }
         }
+
+
+
     }
 }
