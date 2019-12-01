@@ -6,6 +6,13 @@ body {
     font-family: arial;
     background: #9e9e9e;
     line-height: 1.5em;
+    background-image: url('../lib/assets/skull.svg'), none;
+    background-position: bottom right;
+    background-origin: padding-box;
+    background-repeat: no-repeat;
+    /*background-size: cover;*/
+    background-size: 500px 500px;
+    background-attachment: fixed;
 }
 
 #container {
@@ -14,8 +21,15 @@ body {
     padding: 10px;
 }
 
+/*#jumbo {
+    background-image: url('../lib/assets/logo.png');
+}*/
 
-
+#logo {
+    width: 90%;
+    height: auto;
+    align-self: center;
+}
 
 a.navbar-brand {
   white-space: normal;
@@ -76,8 +90,8 @@ html {
 }
 
 body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;    
 }
 .footer {
   position: absolute;
@@ -86,3 +100,5 @@ body {
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
 }
+
+

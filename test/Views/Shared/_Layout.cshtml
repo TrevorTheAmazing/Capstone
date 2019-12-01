@@ -22,13 +22,13 @@
                     <partial name="_LoginPartial" />
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Upload">Upload</a>
+                            <a class="nav-link text-danger" asp-area="" asp-controller="Home" asp-action="Upload">Upload</a>
                         </li>
                     </ul>
                 </div>
@@ -37,15 +37,21 @@
     </header>
     <div class="container">
         <main role="main" class="pb-3">
+
             @RenderBody()
+
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    
+
+    <footer class="border-top footer bg-dark text-muted">
         <div class="container">
-            &copy; 2019 - m3T@L d3t3cToR - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            @*&copy; 2019 - m3T@L d3t3cToR - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>*@
+            &copy; 2019  <img src="~/lib/assets/logoSmall.png" alt="Alternate Text" /> All rights reserved.  
         </div>
     </footer>
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
