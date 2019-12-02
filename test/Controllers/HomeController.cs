@@ -28,7 +28,7 @@ namespace test.Controllers
             return View();
         }
 
-        public IActionResult Upload()
+        public IActionResult Upload()//tlc
         {
             return View();
         }
