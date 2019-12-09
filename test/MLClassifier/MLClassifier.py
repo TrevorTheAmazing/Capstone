@@ -27,8 +27,8 @@ print('DataPath is set to '+DATA_PATH)
 ########################
 #######Get_Labels#######
 ########################
-# Input: Folder Path                                                  #
-# Output: Tuple (Label, Indices of the labels, one-hot encoded labels)#
+# Input: Folder Path
+# Output: Tuple (Label, Indices of the labels, one-hot encoded labels)
 def get_labels(path=DATA_PATH):
     labels = os.listdir(path)
     label_indices = np.arange(0, len(labels))
@@ -179,7 +179,6 @@ def prepare_dataset(path=DATA_PATH):
 prepare_dataset(DATA_PATH)
 
 #tensorboard logs
-#file_writer = tensorflow.summary.FileWriter('C:\\Users\\Trevor\\Dropbox\\dcc\\capstone\\capstone\\Capstone\\mLprojData\\Logs\\', sess.graph)
 current_time = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
 logdir="logs\\fit\\" + current_time #tlc
 tensorboard_callback = keras.callbacks.TensorBoard(log_dir=logdir)

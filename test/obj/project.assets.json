@@ -8984,11 +8984,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Trevor\\Dropbox\\dcc\\capstone\\Capstone\\test\\MetalDetector.csproj",
+      "projectUniqueName": "C:\\Users\\Trevor\\Desktop\\capstone\\Capstone\\test\\MetalDetector.csproj",
       "projectName": "MetalDetector",
-      "projectPath": "C:\\Users\\Trevor\\Dropbox\\dcc\\capstone\\Capstone\\test\\MetalDetector.csproj",
+      "projectPath": "C:\\Users\\Trevor\\Desktop\\capstone\\Capstone\\test\\MetalDetector.csproj",
       "packagesPath": "C:\\Users\\Trevor\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Trevor\\Dropbox\\dcc\\capstone\\Capstone\\test\\obj\\",
+      "outputPath": "C:\\Users\\Trevor\\Desktop\\capstone\\Capstone\\test\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\"
