@@ -33,7 +33,7 @@ namespace test
 
         static void InitWatcherForResults() //tlc
         {
-            string directory = @"C:\Users\Trevor\Dropbox\dcc\capstone\Capstone\test\MLClassifier\mLprojData\Results\";
+            string directory = @"C:\Users\Trevor\Desktop\capstone\Capstone\test\MLClassifier\mLprojData\Results\";
             watcher = new FileSystemWatcher();
             watcher.Path = directory;
             watcher.NotifyFilter = NotifyFilters.FileName;

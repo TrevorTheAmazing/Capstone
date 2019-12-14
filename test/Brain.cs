@@ -43,7 +43,7 @@ namespace Capstone
 
         private static void ConvertMp3ToWav(string mp3)
         {
-            string tempPath = @"C:\Users\Trevor\Dropbox\dcc\capstone\Capstone\test\wwwroot\temp\";
+            string tempPath = @"C:\Users\Trevor\Desktop\capstone\Capstone\test\wwwroot\temp\";
 
             //get the filename without its extension
             string tempFilename = Path.GetFileNameWithoutExtension(mp3);// = "001066.mp3"

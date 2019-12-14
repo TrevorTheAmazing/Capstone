@@ -19,9 +19,9 @@ import tensorboard
 #tensorboard --logdir logs/fit --bind_all
 
 #I. set the data path
-DATA_PATH = "C:\\Users\\Trevor\\Dropbox\\dcc\\capstone\\Capstone\\test\\MLClassifier\\mLprojData\\Data\\"
-PREDICTIONS_PATH = "C:\\Users\\Trevor\\Dropbox\\dcc\\capstone\\Capstone\\test\\MLClassifier\\mLprojData\\Predict\\"
-RESULTS_PATH = "C:\\Users\\Trevor\\Dropbox\\dcc\\capstone\\Capstone\\test\\MLClassifier\\mLprojData\\Results\\"
+DATA_PATH = "C:\\Users\\Trevor\\Desktop\\capstone\\Capstone\\test\\MLClassifier\\mLprojData\\Data\\"
+PREDICTIONS_PATH = "C:\\Users\\Trevor\\Desktop\\capstone\\Capstone\\test\\MLClassifier\\mLprojData\\Predict\\"
+RESULTS_PATH = "C:\\Users\\Trevor\\Desktop\\capstone\\Capstone\\test\\MLClassifier\\mLprojData\\Results\\"
 print('DataPath is set to '+DATA_PATH)
 
 ########################
@@ -204,4 +204,4 @@ results_file = open(os.path.join(RESULTS_PATH, current_time +'.txt'), "w")
 results_file.writelines(resultsList)
 results_file.close()
 
-SystemExit()
+#SystemExit()
