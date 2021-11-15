@@ -25,7 +25,7 @@ numba==0.46.0
 numpy==1.17.4
 oauthlib==3.1.0
 opt-einsum==3.1.0
-pip==19.3.1
+pip==21.1
 pipenv==2018.11.26
 protobuf==3.10.0
 pyasn1==0.4.8
