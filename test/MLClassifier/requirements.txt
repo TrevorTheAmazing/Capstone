@@ -51,5 +51,5 @@ urllib3==1.25.7
 virtualenv==16.7.7
 virtualenv-clone==0.5.3
 Werkzeug==0.16.0
-wheel==0.33.6
+wheel==0.38.1
 wrapt==1.11.2
